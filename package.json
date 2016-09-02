@@ -1,0 +1,89 @@
+{
+  "name": "",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run eslint && jest",
+    "test:watch": "jest --watch",
+    "clean": "rm -rf build",
+    "build": "mkdir -p build && browserify client/app.jsx -o build/bundle.js --extension=.jsx",
+    "watch": "mkdir -p build && watchify client/app.jsx -o build/bundle.js --extension=.jsx -v",
+    "start": "./bin/runServer.js",
+    "start:dev": "nodemon -w ./server -w ./build ./bin/runServer -e js,jsx,json,html",
+    "eslint": "eslint client/**"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OperationSpark/employ.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/OperationSpark/employ/issues"
+  },
+  "homepage": "https://github.com/OperationSpark/employ#readme",
+  "jest": {
+    "verbose": true,
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "jsx"
+    ],
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "moduleDirectories": [
+      "node_modules"
+    ],
+    "unmockedModulePathPatterns": [
+      "./node_modules/react/",
+      "./node_modules/react-dom/",
+      "./node_modules/react-redux/",
+      "./node_modules/react-router/",
+      "./node_modules/react-addons-test-utils/",
+      "./node_modules/firebase/",
+      "./node_modules/lodash",
+      "./node_modules/enzyme/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 40,
+        "functions": 50,
+        "lines": 50,
+        "statements": 50
+      }
+    }
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify"
+      ]
+    ]
+  },
+  "devDependencies": {
+    "babel-jest": "^14.0.0",
+    "babel-polyfill": "^6.9.1",
+    "enzyme": "^2.4.1",
+    "eslint": "^3.1.1",
+    "eslint-plugin-react": "^5.2.2",
+    "jest-cli": "^14.0.0",
+    "nodemon": "^1.9.2",
+    "redux-devtools": "^3.3.1",
+    "watchify": "^3.7.0"
+  },
+  "dependencies": {
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "babelify": "^7.3.0",
+    "browserify": "^13.0.1",
+    "dotenv": "^2.0.0",
+    "express": "^4.14.0",
+    "firebase": "^3.2.1",
+    "lodash": "^4.14.0",
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.6.0",
+    "redux": "^3.5.2"
+  }
+}
